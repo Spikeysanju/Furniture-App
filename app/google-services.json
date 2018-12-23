@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "395818839049",
+    "firebase_url": "https://complaint-8cbc1.firebaseio.com",
+    "project_id": "complaint-8cbc1",
+    "storage_bucket": "complaint-8cbc1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395818839049:android:a5af477f54f62807",
+        "android_client_info": {
+          "package_name": "com.spikeysanju98gmail.complaint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395818839049-fk2s9v9e6g0qudnqram8p03t94cl9vqb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.spikeysanju98gmail.complaint",
+            "certificate_hash": "5d4345d8c3b4a3c76962c28ea08bbf4adde4f046"
+          }
+        },
+        {
+          "client_id": "395818839049-ejp16o99bmua7n0oea9vf4vj33pr1910.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANSJGtvVMa2rBdLUr1qQ4TmPpd9FRNG0I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395818839049-ejp16o99bmua7n0oea9vf4vj33pr1910.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
