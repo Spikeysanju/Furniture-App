@@ -50,15 +50,18 @@ public class CategoryFragment extends Fragment {
 
 
 
+        //Initialising Recyclerview
         chairsRV = (RecyclerView)v.findViewById(R.id.chairsRV);
 
+        //Setting up DB path reference
         categoryDB = FirebaseDatabase.getInstance().getReference().child("Category");
 
+        //Recyclerview Components settings
         chairsRV.setLayoutManager(new GridLayoutManager(getActivity(),2));
         chairsRV.setHasFixedSize(true);
-
         chairsRV.setNestedScrollingEnabled(false);
 
+        //Init Recyclerview in oncreate method
         initCategory();
 
 
@@ -67,8 +70,7 @@ public class CategoryFragment extends Fragment {
 
     private void initCategory() {
 
-
-
+        //Query to display data
         FirebaseRecyclerOptions<Category> options = new FirebaseRecyclerOptions.Builder<Category>()
                 .setQuery(categoryDB,Category.class)
                 .build();
@@ -79,6 +81,8 @@ public class CategoryFragment extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull CategoryViewHolder holder, final int position, @NonNull Category model) {
 
+
+                //Binding Data Here
                 holder.setName(model.getName());
                 holder.setImage(getActivity(), model.getImage());
                 holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -94,8 +98,6 @@ public class CategoryFragment extends Fragment {
             }
 
 
-
-
             @NonNull
             @Override
             public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
@@ -106,6 +108,8 @@ public class CategoryFragment extends Fragment {
             }
         };
 
+
+        //Setting Up recylerview with adapter
         chairsRV.setAdapter(categoryAdapter);
         categoryAdapter.notifyDataSetChanged();
 
@@ -113,6 +117,7 @@ public class CategoryFragment extends Fragment {
 
 
 
+    //ViewHolder Class for Category
     public static class CategoryViewHolder extends  RecyclerView.ViewHolder{
 
         View mView;

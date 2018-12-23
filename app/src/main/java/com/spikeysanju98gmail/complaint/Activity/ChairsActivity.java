@@ -37,13 +37,18 @@ public class ChairsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chairs);
 
+        //initializing recycler view
         chairsRecylcer = (RecyclerView)findViewById(R.id.chairsRecycler);
+
+        //Setting up DB path reference
         mChairsDB = FirebaseDatabase.getInstance().getReference().child("Chairs");
 
+        //Recycler view components setting
         chairsRecylcer.setHasFixedSize(true);
         chairsRecylcer.setLayoutManager(new LinearLayoutManager(this));
         chairsRecylcer.setNestedScrollingEnabled(false);
 
+        //getting ID from category to sort recycler data to display its category products
         if (getIntent()!=null){
             categoryID = getIntent().getStringExtra("categoryID");
             if (!categoryID.isEmpty() && categoryID!=null){
@@ -57,8 +62,13 @@ public class ChairsActivity extends AppCompatActivity {
 
     }
 
+
+    //Displaying Chairs according to their category
+
     private void initChairs(String categoryID) {
 
+
+        //Firebase Query to display category.
 
         Query chairQuery = mChairsDB.orderByChild("menuID").equalTo(categoryID);
 
@@ -75,13 +85,12 @@ public class ChairsActivity extends AppCompatActivity {
                 holder.setName(model.getName());
                 holder.setImage(getApplicationContext(), model.getImage());
 
-
-
                 holder.addToCart.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
 
+                        //Adding product to cart
                         Alerter.create(ChairsActivity.this).setTitle(model.getName())
                                 .setText(model.getPrice())
                                 .setIcon(R.drawable.ic_shopping_cart_white)
@@ -103,6 +112,9 @@ public class ChairsActivity extends AppCompatActivity {
             }
         };
 
+
+        //Setting recycler view with adapter.
+
         chairsRecylcer.setAdapter(chairAdapter);
         chairAdapter.notifyDataSetChanged();
 
@@ -110,6 +122,7 @@ public class ChairsActivity extends AppCompatActivity {
 
 
 
+    //ViewHolder class for chairs
     public static class ChairsHolder extends  RecyclerView.ViewHolder{
 
         View mView;
@@ -142,15 +155,19 @@ public class ChairsActivity extends AppCompatActivity {
     }
 
 
+
     @Override
     protected void onStart() {
         super.onStart();
+
+        //Onstart we should call adapter to listen.
         chairAdapter.startListening();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        //Onstop we should call adapter to stop.
         chairAdapter.stopListening();
     }
 }
